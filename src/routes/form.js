@@ -1,44 +1,44 @@
-import React, { Component } from "react";
-import { Link } from "react-router-dom";
-import MobileStepper from "@mui/material/MobileStepper";
-import { Button } from "@mui/material";
-import Divider from "@mui/material/Divider";
+import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
+import MobileStepper from '@mui/material/MobileStepper';
+import { Button } from '@mui/material';
+import Divider from '@mui/material/Divider';
 
-import { db } from "../firebase/firebaseConfig";
-import { collection, addDoc } from "firebase/firestore";
-import Occasion from "../steppers/occasion";
-import Date from "../steppers/date";
-import Location from "../steppers/location";
-import Organizer from "../steppers/organizer";
-import Summary from "../steppers/summary";
+import { db } from '../firebase/firebaseConfig';
+import { collection, addDoc } from 'firebase/firestore';
+import Occasion from '../steppers/occasion';
+import Date from '../steppers/date';
+import Location from '../steppers/location';
+import Organizer from '../steppers/organizer';
+import Summary from '../steppers/summary';
 
 export default class Form extends Component {
-  eventsRef = collection(db, "events");
+  eventsRef = collection(db, 'events');
 
   styles = {
-    routerLinkStyle: { textDecoration: "none" },
-    routerDisabledLinkStyle: { textDecoration: "none", pointerEvents: "none" },
+    routerLinkStyle: { textDecoration: 'none' },
+    routerDisabledLinkStyle: { textDecoration: 'none', pointerEvents: 'none' },
 
     buttonStyle: {
-      width: "14%",
-      marginTop: "1%",
-      padding: "0.6%",
-      boxShadow: "none",
-      fontWeight: "bold",
-      textTransform: "none",
+      width: '14%',
+      marginTop: '1%',
+      padding: '0.6%',
+      boxShadow: 'none',
+      fontWeight: 'bold',
+      textTransform: 'none',
     },
   };
 
   state = {
     step: 0,
-    title: "",
-    description: "",
-    date: "",
-    location: "",
-    name: "",
-    email: "",
+    title: '',
+    description: '',
+    date: '',
+    location: '',
+    name: '',
+    email: '',
   };
-  stepName = ["wat", "wanneer", "waar", "wie", "overzicht"];
+  stepName = ['wat', 'wanneer', 'waar', 'wie', 'overzicht'];
 
   newEvent = async () => {
     const { title, description, date, location, name, email } = this.state;
@@ -108,7 +108,7 @@ export default class Form extends Component {
           />
         );
       default:
-        throw new Error("Stap " + step + " bestaat niet!");
+        throw new Error('Stap ' + step + ' bestaat niet!');
     }
   };
 
@@ -149,38 +149,38 @@ export default class Form extends Component {
 
     return (
       <center>
-        <div className="stepper-container">
+        <div className='stepper-container'>
           <MobileStepper
-            position="static"
-            variant="progress"
+            position='static'
+            variant='progress'
             steps={5}
             activeStep={step}
             nextButton={
               <Button onClick={this.handleNext} disabled={step === 4}>
-                {step === 4 ? "overzicht" : this.stepName[step + 1]}
+                {step === 4 ? 'overzicht' : this.stepName[step + 1]}
               </Button>
             }
             backButton={
               <Button onClick={this.handleBack} disabled={step === 0}>
-                {step === 0 ? "wat" : this.stepName[step - 1]}
+                {step === 0 ? 'wat' : this.stepName[step - 1]}
               </Button>
             }
           />
         </div>
 
-        <div className="form-container">{this.handleSteps()}</div>
+        <div className='form-container'>{this.handleSteps()}</div>
 
-        <div className="button-container">
+        <div className='button-container'>
           <Divider />
           <Link to={`../`} style={this.styles.routerLinkStyle}>
             <Button
               style={this.styles.buttonStyle}
               sx={{
-                marginRight: "1%",
-                backgroundColor: "#e7e7e7",
-                color: "#999",
-                "&:hover": {
-                  backgroundColor: "#d9d9d9",
+                marginRight: '1%',
+                backgroundColor: '#e7e7e7',
+                color: '#999',
+                '&:hover': {
+                  backgroundColor: '#d9d9d9',
                 },
               }}
             >
@@ -199,13 +199,13 @@ export default class Form extends Component {
               onClick={this.newEvent}
               style={this.styles.buttonStyle}
               sx={{
-                backgroundColor: "#179fe8",
-                color: "white",
-                "&:hover": {
-                  backgroundColor: "#4d94db",
+                backgroundColor: '#179fe8',
+                color: 'white',
+                '&:hover': {
+                  backgroundColor: '#4d94db',
                 },
-                "&:disabled": {
-                  backgroundColor: "#e64a4a",
+                '&:disabled': {
+                  backgroundColor: '#e64a4a',
                 },
               }}
               disabled={!formCompleted}

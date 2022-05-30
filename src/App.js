@@ -1,129 +1,36 @@
-import "./App.css";
-import React from "react";
-import { Link, Outlet } from "react-router-dom";
-import { Divider, Button } from '@mui/material';
-import PushPinOutlinedIcon from '@mui/icons-material/PushPinOutlined';
-import PersonOutlinedIcon from '@mui/icons-material/PersonOutlined';
+import './App.css';
+import Dashboard from './components/dashboard/Dashboard';
+import Events from './routes/events';
+import Form from './routes/form';
+import Login from './routes/login';
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-const styles = {
-  routerLinkStyle: { textDecoration: "none", color: "inherit" },
-  
-  iconButtonStyle: {
-    minWidth: "0",
-    height: "2em",
-    width: "2em",
-  },
-};
-
-export default function Dashboard() {
+export default function App() {
   return (
-    <div className="app">
-      <div className="header">
-        <div className="header-title">
-          <Link to={`../`} style={styles.routerLinkStyle}>
-            budget datumprikker
-          </Link>
-        </div>
-        <div className="header-menu">
-            <Link to={`/form`} style={styles.routerLinkStyle}>
-              <li>
-                afspraak aanmaken
-                <Button
-                  style={styles.iconButtonStyle}
-                  sx={{
-                    marginLeft: "15px",
-                    backgroundColor: "#47d074",
-                    "&:disabled": {
-                      color: 'white',
-                    },
-                  }}
-                  disabled
-                >
-                  <PushPinOutlinedIcon />
-                </Button>
-              </li>
-            </Link>
-            <Link to={`/login`} style={styles.routerLinkStyle}>
-              <li>
-                inloggen
-                <Button
-                  style={styles.iconButtonStyle}
-                  sx={{
-                    marginLeft: "15px",
-                    backgroundColor: "#e7e7e7",
-                    "&:disabled": {
-                      color: "#999",
-                    },
-                  }}
-                  disabled
-                >
-                  <PersonOutlinedIcon />
-                </Button>
-              </li>
-            </Link>
-        </div>
-      </div>
-      <Divider />
-      <Outlet />
-      awefawefawefawefawefaewf
-    </div>
-  );
-}
-
-export function App() {
-  return (
-    // <div className="app">
-    //   <div className="header">
-    //     <div className="header-title">
-    //       <Link to={`../`} style={styles.routerLinkStyle}>
-    //         budget datumprikker
-    //       </Link>
-    //     </div>
-    //     <div className="header-menu">
-    //         <Link to={`/form`} style={styles.routerLinkStyle}>
-    //           <li>
-    //             afspraak aanmaken
-    //             <Button
-    //               style={styles.iconButtonStyle}
-    //               sx={{
-    //                 marginLeft: "15px",
-    //                 backgroundColor: "#47d074",
-    //                 "&:disabled": {
-    //                   color: 'white',
-    //                 },
-    //               }}
-    //               disabled
-    //             >
-    //               <PushPinOutlinedIcon />
-    //             </Button>
-    //           </li>
-    //         </Link>
-    //         <Link to={`/login`} style={styles.routerLinkStyle}>
-    //           <li>
-    //             inloggen
-    //             <Button
-    //               style={styles.iconButtonStyle}
-    //               sx={{
-    //                 marginLeft: "15px",
-    //                 backgroundColor: "#e7e7e7",
-    //                 "&:disabled": {
-    //                   color: "#999",
-    //                 },
-    //               }}
-    //               disabled
-    //             >
-    //               <PersonOutlinedIcon />
-    //             </Button>
-    //           </li>
-    //         </Link>
-    //     </div>
-    //   </div>
-    //   <Divider />
-    //   <Outlet />
-    //   awefawefawefawefawefaewf
-    // </div>
-    <>
-      wat gebeurt hier
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Dashboard />}>
+          <Route path='events' element={<Events />} />
+          <Route path='form' element={<Form />} />
+          <Route path='login' element={<Login />} />
+          <Route
+            path='*'
+            element={
+              <main
+                style={{
+                  position: 'absolute',
+                  top: '50%',
+                  left: '50%',
+                  transform: 'translateX(-50%) translateY(-50%)',
+                }}
+              >
+                <p>Het is nogal leeg hier...</p>
+              </main>
+            }
+          />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }

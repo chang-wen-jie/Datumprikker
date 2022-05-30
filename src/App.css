@@ -12,6 +12,10 @@
   width: 10%;
 }
 
+.MuiDialog-root {
+  background-color: rgba(255,255,255, 0.1);
+}
+
 .MuiTextField-root {
   height: 35%;
   width: 35%;
@@ -61,6 +65,16 @@ li {
   display: inline;
   margin-right: 30px;
   margin: 0 20px;
+}
+
+.event-list-container {
+  display: flex;
+  margin: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 100%;
+  margin-top: 35px;
+  gap: 35px;
 }
 
 .stepper-container {
