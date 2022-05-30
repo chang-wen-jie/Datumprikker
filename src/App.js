@@ -15,7 +15,7 @@ const styles = {
   },
 };
 
-export default function Header() {
+export default function Dashboard() {
   return (
     <div className="app">
       <div className="header">
@@ -65,6 +65,65 @@ export default function Header() {
       </div>
       <Divider />
       <Outlet />
+      awefawefawefawefawefaewf
     </div>
+  );
+}
+
+export function App() {
+  return (
+    // <div className="app">
+    //   <div className="header">
+    //     <div className="header-title">
+    //       <Link to={`../`} style={styles.routerLinkStyle}>
+    //         budget datumprikker
+    //       </Link>
+    //     </div>
+    //     <div className="header-menu">
+    //         <Link to={`/form`} style={styles.routerLinkStyle}>
+    //           <li>
+    //             afspraak aanmaken
+    //             <Button
+    //               style={styles.iconButtonStyle}
+    //               sx={{
+    //                 marginLeft: "15px",
+    //                 backgroundColor: "#47d074",
+    //                 "&:disabled": {
+    //                   color: 'white',
+    //                 },
+    //               }}
+    //               disabled
+    //             >
+    //               <PushPinOutlinedIcon />
+    //             </Button>
+    //           </li>
+    //         </Link>
+    //         <Link to={`/login`} style={styles.routerLinkStyle}>
+    //           <li>
+    //             inloggen
+    //             <Button
+    //               style={styles.iconButtonStyle}
+    //               sx={{
+    //                 marginLeft: "15px",
+    //                 backgroundColor: "#e7e7e7",
+    //                 "&:disabled": {
+    //                   color: "#999",
+    //                 },
+    //               }}
+    //               disabled
+    //             >
+    //               <PersonOutlinedIcon />
+    //             </Button>
+    //           </li>
+    //         </Link>
+    //     </div>
+    //   </div>
+    //   <Divider />
+    //   <Outlet />
+    //   awefawefawefawefawefaewf
+    // </div>
+    <>
+      wat gebeurt hier
+    </>
   );
 }
