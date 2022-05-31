@@ -17,30 +17,27 @@ export default class Date extends Component {
 
   render() {
     const { values, handleChange } = this.props;
-    // const [value, setValue] = React.useState(new Date());
-    const [value, setValue] = "test";
-    
+    console.log("wat is values ", values);
+    console.log("en date ", values.date);
+
     return (
       <>
           <div className="stepper-title">
               <b><h1>Welke data stel je voor?</h1></b><br></br><p>Kies een datum</p>
           </div>
-          <TextField
+          {/* <TextField
               label="Datum"
               defaultValue={values.date}
               onChange={handleChange('date')}
-          />
+          /> */}
 
-          <br />
-
+          {/* <br /> */}
           <LocalizationProvider dateAdapter={AdapterDateFns}>
               <DesktopDatePicker
-                label="For desktop"
-                value={value}
-                minDate={new Date('2017-01-01')}
-                onChange={(newValue) => {
-                  setValue(newValue);
-                }}
+                label="Datum"
+                value={values.date}
+                minDate={new Date()}
+                onChange={handleChange('date')}
                 renderInput={(params) => <TextField {...params} />}
               />
           </LocalizationProvider>

@@ -1,16 +1,15 @@
 import { db } from "../firebase/firebaseConfig";
 import React, { useState, useEffect } from "react";
 import { collection, getDocs } from "firebase/firestore";
+import { Button } from "@mui/material";
+import TextField from '@mui/material/TextField';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Button } from "@mui/material";
-import TextField from '@mui/material/TextField';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import DialogTitle from '@mui/material/DialogTitle';
 
 export default function Events() {
   const eventsRef = collection(db, "events");
@@ -37,79 +36,85 @@ export default function Events() {
   }, [])
 
   return (
-    <div className="event-list-container">
-      {
-        eventList && eventList.map(event => {
-          return (
-            <>
-              <Card variant="outlined" sx={{ width: 250 }}>
-                <CardContent>
-                    <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-                      {event.date}
-                    </Typography>
-                    <Typography variant="h5" component="div">
-                      {event.occasion.title}
-                    </Typography>
-                    <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                      {event.location}
-                    </Typography>
-                    <Typography variant="body2">
-                      {event.occasion.description}
-                    </Typography>
-                </CardContent>
-                <CardActions>
-                  <Button onClick={handleClickOpen} size="small">bekijken</Button>
-                  <Dialog open={open} onClose={handleClose} PaperProps={{elevation: 1}} hideBackdrop>
-                    <DialogTitle>Bekijk deze afspraak of pas wat aan</DialogTitle>
-                    <DialogContent>
-                      <TextField
-                        label="Titel"
-                        defaultValue={event.occasion.title}
-                        fullWidth
-                        variant="standard"
-                      />
-                      <TextField
-                        label="Description"
-                        defaultValue={event.occasion.description}
-                        fullWidth
-                        variant="standard"
-                      />
-                      <TextField
-                        label="Datum"
-                        defaultValue={event.date}
-                        fullWidth
-                        variant="standard"
-                      />
-                      <TextField
-                        label="Locatie"
-                        defaultValue={event.location}
-                        fullWidth
-                        variant="standard"
-                      />
-                      <TextField
-                        label="Naam"
-                        defaultValue={event.organizer.name}
-                        fullWidth
-                        variant="standard"
-                      />
-                      <TextField
-                        label="E-mailadres"
-                        defaultValue={event.organizer.email}
-                        fullWidth
-                        variant="standard"
-                      />
-                    </DialogContent>
-                    <DialogActions>
-                      <Button onClick={handleClose}>terug</Button>
-                      <Button onClick={handleClose}>Aanpassen</Button>
-                    </DialogActions>
-                  </Dialog>
-                </CardActions>
-              </Card>
-            </>
-            )
-        })
-      }
-    </div>
+    <>
+      <div className="stepper-title" style={{textAlign: "center"}}>
+          <b><h1>Aankomende afspraken</h1></b><br></br><p>Prik een afspraak die jou intereseerd</p>
+      </div>
+      <div className="event-list-container">
+        {
+          eventList && eventList.map((item, index) => {
+            return (
+              <div key={item.id}>
+                <Card variant="outlined" sx={{ width: 250 }}>
+                  <CardContent>
+                      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+                        {item.date}
+                      </Typography>
+                      <Typography variant="h5" component="div">
+                        {item.occasion.title}
+                      </Typography>
+                      <Typography sx={{ mb: 1.5 }} color="text.secondary">
+                        {item.location}
+                      </Typography>
+                      <Typography variant="body2">
+                        {item.occasion.description}
+                      </Typography>
+                  </CardContent>
+                  <CardActions>
+                    card {index}
+                    <Button onClick={handleClickOpen} size="small" itemID={item.id}>bekijken</Button>
+                    <Dialog open={open} onClose={handleClose} PaperProps={{elevation: 1}} hideBackdrop>
+                      {index}
+                      <DialogContent>
+                        <TextField
+                          label="Titel"
+                          defaultValue={eventList[index].occasion.title}
+                          fullWidth
+                          variant="standard"
+                        />
+                        <TextField
+                          label="Description"
+                          defaultValue={eventList[index].occasion.description}
+                          fullWidth
+                          variant="standard"
+                        />
+                        <TextField
+                          label="Datum"
+                          defaultValue={eventList[index].date}
+                          fullWidth
+                          variant="standard"
+                        />
+                        <TextField
+                          label="Locatie"
+                          defaultValue={eventList[index].location}
+                          fullWidth
+                          variant="standard"
+                        />
+                        <TextField
+                          label="Naam"
+                          defaultValue={eventList[index].organizer.name}
+                          fullWidth
+                          variant="standard"
+                        />
+                        <TextField
+                          label="E-mailadres"
+                          defaultValue={eventList[index].organizer.email}
+                          fullWidth
+                          variant="standard"
+                        />
+                      </DialogContent>
+                      <DialogActions>
+                        <Button onClick={handleClose}>terug</Button>
+                        <Button onClick={handleClose}>Aanpassen</Button>
+                      </DialogActions>
+                    </Dialog>
+                  </CardActions>
+                </Card>
+              </div>
+              )
+          })
+        }
+      </div>
+    </>
   );
 }

@@ -1,11 +1,11 @@
-import React, { Component } from "react";
-import TextField from "@mui/material/TextField";
+import React, { Component } from 'react';
+import TextField from '@mui/material/TextField';
 
 export default class Summary extends Component {
   styles = {
     textFieldStyle: {
-      width: "25%",
-      margin: "0% 3% 1% 3%",
+      width: '25%',
+      margin: '0% 3% 1% 3%',
     },
   };
 
@@ -29,39 +29,39 @@ export default class Summary extends Component {
         <TextField
           label="Titel"
           defaultValue={values.title}
-          onChange={handleChange("title")}
+          onChange={handleChange('title')}
           style={this.styles.textFieldStyle}
         />
         <TextField
           label="Omschrijving"
           defaultValue={values.description}
-          onChange={handleChange("description")}
+          onChange={handleChange('description')}
           style={this.styles.textFieldStyle}
         />
         <br />
         <TextField
           label="Datum"
           defaultValue={values.date}
-          onChange={handleChange("date")}
+          onChange={handleChange('date')}
           style={this.styles.textFieldStyle}
         />
         <TextField
           label="Locatie"
           defaultValue={values.location}
-          onChange={handleChange("location")}
+          onChange={handleChange('location')}
           style={this.styles.textFieldStyle}
         />
         <br />
         <TextField
           label="Naam"
           defaultValue={values.name}
-          onChange={handleChange("name")}
+          onChange={handleChange('name')}
           style={this.styles.textFieldStyle}
         />
         <TextField
           label="E-mailadres"
           defaultValue={values.email}
-          onChange={handleChange("email")}
+          onChange={handleChange('email')}
           style={this.styles.textFieldStyle}
         />
       </>

@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import TextField from "@mui/material/TextField";
+import React, { Component } from 'react';
+import TextField from '@mui/material/TextField';
 
 export default class Organizer extends Component {
   next = (e) => {
@@ -27,13 +27,13 @@ export default class Organizer extends Component {
         <TextField
           label="Naam"
           defaultValue={values.name}
-          onChange={handleChange("name")}
+          onChange={handleChange('name')}
         />
         <br />
         <TextField
           label="E-mailadres"
           defaultValue={values.email}
-          onChange={handleChange("email")}
+          onChange={handleChange('email')}
         />
       </>
     );

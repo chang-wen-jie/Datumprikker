@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import TextField from "@mui/material/TextField";
+import React, { Component } from 'react';
+import TextField from '@mui/material/TextField';
 
 export default class Location extends Component {
   next = (e) => {
@@ -27,7 +27,7 @@ export default class Location extends Component {
         <TextField
           label="Locatie"
           defaultValue={values.location}
-          onChange={handleChange("location")}
+          onChange={handleChange('location')}
         />
       </>
     );

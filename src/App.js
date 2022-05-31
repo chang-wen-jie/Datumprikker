@@ -1,8 +1,8 @@
 import './App.css';
 import Dashboard from './components/dashboard/Dashboard';
-import Events from './routes/events';
-import Form from './routes/form';
-import Login from './routes/login';
+import Events from './routes/Events';
+import Form from './routes/Form';
+import Login from './routes/Login';
 import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -10,12 +10,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path='/' element={<Dashboard />}>
-          <Route path='events' element={<Events />} />
-          <Route path='form' element={<Form />} />
-          <Route path='login' element={<Login />} />
+        <Route path="/" element={<Dashboard />}>
+          <Route path="events" element={<Events />} />
+          <Route path="form" element={<Form />} />
+          <Route path="login" element={<Login />} />
           <Route
-            path='*'
+            path="*"
             element={
               <main
                 style={{

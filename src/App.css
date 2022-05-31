@@ -1,6 +1,6 @@
 @font-face {
   font-family: plus-jakarta-sans;
-  src: url(fonts/PlusJakartaSans-Regular.ttf);
+  src: url(styles/fonts/PlusJakartaSans-Regular.ttf);
 }
 
 .app {
@@ -13,7 +13,7 @@
 }
 
 .MuiDialog-root {
-  background-color: rgba(255,255,255, 0.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .MuiTextField-root {
@@ -72,8 +72,9 @@ li {
   margin: auto;
   flex-wrap: wrap;
   justify-content: center;
+  max-height: 1%;
   max-width: 100%;
-  margin-top: 35px;
+  margin-top: -55px;
   gap: 35px;
 }
 
@@ -101,4 +102,69 @@ li {
 
 .button-container {
   margin-top: 18%;
+}
+
+.login-container {
+  height: 350px;
+  width: 400px;
+  background-color: #f7f7f7;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.user-icon-wrapper {
+  height: 200px;
+  width: 200px;
+  background-repeat: no-repeat;
+}
+
+.user-icon-wrapper :hover {
+  box-shadow: none;
+}
+
+.user-icon {
+  margin-top: 50px;
+  width: 150px;
+}
+
+.user-icon :hover {
+  box-shadow: none;
+}
+
+.google-btn-wrapper :hover {
+  box-shadow: 0 0 5px #4285f4;
+  cursor: pointer;
+}
+
+.google-btn {
+  margin-top: 50px;
+  height: 50px;
+  width: 240px;
+  background-color: #4285f4;
+  border: none;
+  border-radius: 1px;
+  color: #fff;
+  box-shadow: 0 2px 4px 0 rgb(0 0 0 / 25%);
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.21px;
+}
+
+.google-icon-wrapper {
+  float: left;
+  margin-left: -5px;
+  height: 48px;
+  width: 48px;
+  background-color: white;
+  border-radius: 1px;
+}
+
+.google-icon-wrapper :hover {
+  box-shadow: none;
+}
+
+.google-icon {
+  position: relative;
+  top: 25%;
+  margin: 0;
 }

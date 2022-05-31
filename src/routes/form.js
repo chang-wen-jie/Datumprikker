@@ -1,16 +1,15 @@
+import { db } from '../firebase/firebaseConfig';
+import { collection, addDoc } from 'firebase/firestore';
+import Occasion from '../components/steppers/Occasion';
+import Date from '../components/steppers/Date';
+import Location from '../components/steppers/Location';
+import Organizer from '../components/steppers/Organizer';
+import Summary from '../components/steppers/Summary';
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import MobileStepper from '@mui/material/MobileStepper';
 import { Button } from '@mui/material';
 import Divider from '@mui/material/Divider';
-
-import { db } from '../firebase/firebaseConfig';
-import { collection, addDoc } from 'firebase/firestore';
-import Occasion from '../steppers/occasion';
-import Date from '../steppers/date';
-import Location from '../steppers/location';
-import Organizer from '../steppers/organizer';
-import Summary from '../steppers/summary';
 
 export default class Form extends Component {
   eventsRef = collection(db, 'events');
@@ -33,7 +32,7 @@ export default class Form extends Component {
     step: 0,
     title: '',
     description: '',
-    date: '',
+    date: new Date(),
     location: '',
     name: '',
     email: '',
@@ -149,10 +148,10 @@ export default class Form extends Component {
 
     return (
       <center>
-        <div className='stepper-container'>
+        <div className="stepper-container">
           <MobileStepper
-            position='static'
-            variant='progress'
+            position="static"
+            variant="progress"
             steps={5}
             activeStep={step}
             nextButton={
@@ -168,9 +167,9 @@ export default class Form extends Component {
           />
         </div>
 
-        <div className='form-container'>{this.handleSteps()}</div>
+        <div className="form-container">{this.handleSteps()}</div>
 
-        <div className='button-container'>
+        <div className="button-container">
           <Divider />
           <Link to={`../`} style={this.styles.routerLinkStyle}>
             <Button

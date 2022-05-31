@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import TextField from "@mui/material/TextField";
+import React, { Component } from 'react';
+import TextField from '@mui/material/TextField';
 
 export default class Occasion extends Component {
   next = (e) => {
@@ -22,14 +22,14 @@ export default class Occasion extends Component {
         <TextField
           label="Titel"
           defaultValue={values.title}
-          onChange={handleChange("title")}
+          onChange={handleChange('title')}
         />
         <br />
         <TextField
           label="Omschrijving"
           defaultValue={values.description}
           multiline
-          onChange={handleChange("description")}
+          onChange={handleChange('description')}
         />
         <br />
       </>
