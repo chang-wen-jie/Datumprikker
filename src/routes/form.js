@@ -37,7 +37,7 @@ export default class Form extends Component {
     name: '',
     email: '',
   };
-  
+
   stepName = ['wat', 'wanneer', 'waar', 'wie', 'overzicht'];
 
   newEvent = async () => {
@@ -45,6 +45,7 @@ export default class Form extends Component {
     const values = { title, description, date, location, name, email };
 
     await addDoc(this.eventsRef, {
+      pins: 0,
       occasion: {
         title: values.title,
         description: values.description,
@@ -77,7 +78,7 @@ export default class Form extends Component {
           <Date
             handleNext={this.handleNext}
             handleBack={this.handleBack}
-            handleChange={this.handleChange}
+            handleDateChange={this.handleDateChange}
             values={values}
           />
         );
@@ -130,6 +131,10 @@ export default class Form extends Component {
     this.setState({ [input]: e.target.value });
   };
 
+  handleDateChange = (input) => (e) => {
+    this.setState({ [input]: e });
+  };
+
   render() {
     const { step, title, description, date, location, name, email } =
       this.state;
@@ -149,10 +154,10 @@ export default class Form extends Component {
 
     return (
       <center>
-        <div className="stepper-container">
+        <div className='stepper-container'>
           <MobileStepper
-            position="static"
-            variant="progress"
+            position='static'
+            variant='progress'
             steps={5}
             activeStep={step}
             nextButton={
@@ -166,11 +171,12 @@ export default class Form extends Component {
               </Button>
             }
           />
+          ∏
         </div>
 
-        <div className="form-container">{this.handleSteps()}</div>
+        <div className='form-container'>{this.handleSteps()}</div>
 
-        <div className="button-container">
+        <div className='button-container'>
           <Divider />
           <Link to={`../`} style={this.styles.routerLinkStyle}>
             <Button

@@ -19,9 +19,9 @@ const styles = {
 };
 
 export default function Dashboard() {
-  const [user] = useAuthState(auth);
-  const [name, setName] = useState("");
   const location = useLocation();
+  const [user] = useAuthState(auth);
+  const [name, setName] = useState('');
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -29,23 +29,22 @@ export default function Dashboard() {
       navigate('/events');
     }
 
-    const usersRef = collection(db, "users");
-    
     const fetchDisplayName = async () => {
-      if(user) {
+      if (user) {
         try {
-          const q = query(usersRef, where("uid", "==", user.uid));
-          const doc = await getDocs(q);
-          const data = doc.docs[0].data();
+          const usersRef = collection(db, 'users');
+          const userQuery = query(usersRef, where('uid', '==', user.uid));
+          const userDoc = await getDocs(userQuery);
+          const data = userDoc.docs[0].data();
           setName(data.displayName);
         } catch (err) {
-          console.error("Onbereikbare gebruikersnaam:", err);
-          alert("Er is iets misgegaan met het ophalen van de gebruikersnaam");
+          console.error('Foutmelding:', err);
+          alert('Er is iets misgegaan met het ophalen van de gebruikersnaam');
         }
       }
     };
     fetchDisplayName();
-  }, [user, location, navigate]);
+  }, [location, user, navigate]);
 
   return (
     <div className='app'>
@@ -74,12 +73,28 @@ export default function Dashboard() {
               </Button>
             </li>
           </Link>
-        {
-          user ?
+          {user ? (
             <li>
               {name}
+              <Button
+                onClick={logout}
+                style={styles.iconButtonStyle}
+                sx={{
+                  marginLeft: '15px',
+                  backgroundColor: '#e7e7e7',
+                  '&:disabled': {
+                    color: '#999',
+                  },
+                }}
+              >
+                <LogoutIcon />
+              </Button>
+            </li>
+          ) : (
+            <Link to={`/login`} style={styles.routerLinkStyle}>
+              <li>
+                inloggen
                 <Button
-                  onClick={logout}
                   style={styles.iconButtonStyle}
                   sx={{
                     marginLeft: '15px',
@@ -88,30 +103,13 @@ export default function Dashboard() {
                       color: '#999',
                     },
                   }}
+                  disabled
                 >
-                <LogoutIcon />
-              </Button>
-            </li>
-          :
-            <Link to={`/login`} style={styles.routerLinkStyle}>
-              <li>
-                inloggen
-                  <Button
-                    style={styles.iconButtonStyle}
-                    sx={{
-                      marginLeft: '15px',
-                      backgroundColor: '#e7e7e7',
-                      '&:disabled': {
-                        color: '#999',
-                      },
-                    }}
-                    disabled
-                  >
                   <PersonOutlinedIcon />
                 </Button>
               </li>
             </Link>
-        }
+          )}
         </div>
       </div>
       <Divider />

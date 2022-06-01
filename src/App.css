@@ -78,6 +78,10 @@ li {
   gap: 35px;
 }
 
+.pin-container {
+  float: right;
+}
+
 .stepper-container {
   margin-top: 2%;
   width: 60%;

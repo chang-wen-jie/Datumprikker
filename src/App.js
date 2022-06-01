@@ -10,12 +10,12 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Dashboard />}>
-          <Route path="events" element={<Events />} />
-          <Route path="form" element={<Form />} />
-          <Route path="login" element={<Login />} />
+        <Route path='/' element={<Dashboard />}>
+          <Route path='events' element={<Events />} />
+          <Route path='form' element={<Form />} />
+          <Route path='login' element={<Login />} />
           <Route
-            path="*"
+            path='*'
             element={
               <main
                 style={{

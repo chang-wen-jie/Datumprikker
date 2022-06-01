@@ -9,11 +9,11 @@ export default function Login() {
 
   useEffect(() => {
     if (user) navigate('/');
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <>
-      <div className="stepper-title" style={{ textAlign: 'center' }}>
+      <div className='stepper-title' style={{ textAlign: 'center' }}>
         <b>
           <h1>Aanmelden</h1>
         </b>
@@ -21,20 +21,20 @@ export default function Login() {
         <p>Meld aan met Google</p>
       </div>
       <center>
-        <div className="login-container">
-          <div className="user-icon-wrapper">
+        <div className='login-container'>
+          <div className='user-icon-wrapper'>
             <img
-              className="user-icon"
+              className='user-icon'
               src={require('./../styles/img/user-icon.png')}
               alt='User Icon'
             />
           </div>
-          <div className="google-btn-wrapper">
-            <button className="google-btn" onClick={signInWithGoogle}>
-              <div className="google-icon-wrapper">
+          <div className='google-btn-wrapper'>
+            <button className='google-btn' onClick={signInWithGoogle}>
+              <div className='google-icon-wrapper'>
                 <img
-                  className="google-icon"
-                  src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                  className='google-icon'
+                  src='https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg'
                   alt='Google Icon'
                 />
               </div>
