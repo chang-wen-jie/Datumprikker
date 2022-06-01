@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import TextField from '@mui/material/TextField';
+import Moment from 'moment';
+import 'moment/locale/nl';
 
 export default class Summary extends Component {
   styles = {
@@ -23,41 +25,49 @@ export default class Summary extends Component {
           <b>
             <h1>Overzicht van jouw afspraak</h1>
           </b>
-          <br></br>
+          <br />
           <p>Sla deze afspraak op</p>
         </div>
+
         <TextField
           label="Titel"
           defaultValue={values.title}
           onChange={handleChange('title')}
           style={this.styles.textFieldStyle}
         />
+
         <TextField
           label="Omschrijving"
           defaultValue={values.description}
           onChange={handleChange('description')}
           style={this.styles.textFieldStyle}
         />
+
         <br />
+
         <TextField
           label="Datum"
-          defaultValue={values.date}
+          defaultValue={Moment(values.date).format('LL')}
           onChange={handleChange('date')}
           style={this.styles.textFieldStyle}
         />
+
         <TextField
           label="Locatie"
           defaultValue={values.location}
           onChange={handleChange('location')}
           style={this.styles.textFieldStyle}
         />
+
         <br />
+
         <TextField
           label="Naam"
           defaultValue={values.name}
           onChange={handleChange('name')}
           style={this.styles.textFieldStyle}
         />
+        
         <TextField
           label="E-mailadres"
           defaultValue={values.email}

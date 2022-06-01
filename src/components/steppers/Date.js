@@ -17,7 +17,6 @@ export default class Date extends Component {
 
   render() {
     const { values, handleDateChange } = this.props;
-    console.log('wat is date ', values.date);
 
     return (
       <>
@@ -25,15 +24,15 @@ export default class Date extends Component {
           <b>
             <h1>Welke data stel je voor?</h1>
           </b>
-          <br></br>
+          <br />
           <p>Kies een datum</p>
         </div>
 
         <LocalizationProvider dateAdapter={AdapterDateFns}>
           <DesktopDatePicker
             label='Datum'
-            //value={values.date}
-            minDate={new Date()}
+            value={values.date}
+            minDate={new Date('2017-01-01')}
             onChange={handleDateChange('date')}
             renderInput={(params) => <TextField {...params} />}
           />

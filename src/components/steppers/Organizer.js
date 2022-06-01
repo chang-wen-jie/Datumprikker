@@ -21,15 +21,18 @@ export default class Organizer extends Component {
           <b>
             <h1>Wie ben je?</h1>
           </b>
-          <br></br>
+          <br />
           <p>Vul jouw persoonsgegevens in</p>
         </div>
+
         <TextField
           label="Naam"
           defaultValue={values.name}
           onChange={handleChange('name')}
         />
+
         <br />
+
         <TextField
           label="E-mailadres"
           defaultValue={values.email}

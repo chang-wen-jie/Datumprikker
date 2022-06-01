@@ -32,7 +32,7 @@ export default class Form extends Component {
     step: 0,
     title: '',
     description: '',
-    date: new Date(),
+    date: '',
     location: '',
     name: '',
     email: '',
@@ -45,13 +45,12 @@ export default class Form extends Component {
     const values = { title, description, date, location, name, email };
 
     await addDoc(this.eventsRef, {
-      pins: 0,
+      date: values.date,
+      location: values.location,
       occasion: {
         title: values.title,
         description: values.description,
       },
-      date: values.date,
-      location: values.location,
       organizer: {
         name: values.name,
         email: values.email,
@@ -171,13 +170,14 @@ export default class Form extends Component {
               </Button>
             }
           />
-          ∏
         </div>
 
         <div className='form-container'>{this.handleSteps()}</div>
 
         <div className='button-container'>
+
           <Divider />
+
           <Link to={`../`} style={this.styles.routerLinkStyle}>
             <Button
               style={this.styles.buttonStyle}
@@ -193,6 +193,7 @@ export default class Form extends Component {
               annuleren
             </Button>
           </Link>
+
           <Link
             to={`../`}
             style={

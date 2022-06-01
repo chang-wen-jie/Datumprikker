@@ -21,9 +21,10 @@ export default class Location extends Component {
           <b>
             <h1>Waar wil je afspreken?</h1>
           </b>
-          <br></br>
+          <br />
           <p>Suggesteer een afspreeklocatie</p>
         </div>
+
         <TextField
           label="Locatie"
           defaultValue={values.location}

@@ -17,9 +17,10 @@ export default function Login() {
         <b>
           <h1>Aanmelden</h1>
         </b>
-        <br></br>
+        <br />
         <p>Meld aan met Google</p>
       </div>
+      
       <center>
         <div className='login-container'>
           <div className='user-icon-wrapper'>

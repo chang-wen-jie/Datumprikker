@@ -33,12 +33,12 @@ export default function Dashboard() {
       if (user) {
         try {
           const usersRef = collection(db, 'users');
-          const userQuery = query(usersRef, where('uid', '==', user.uid));
+          const userQuery = query(usersRef, where('email', '==', user.email));
           const userDoc = await getDocs(userQuery);
           const data = userDoc.docs[0].data();
           setName(data.displayName);
         } catch (err) {
-          console.error('Foutmelding:', err);
+          console.error('Gebruikersnaam ophalen mislukt:', err);
           alert('Er is iets misgegaan met het ophalen van de gebruikersnaam');
         }
       }
@@ -47,14 +47,15 @@ export default function Dashboard() {
   }, [location, user, navigate]);
 
   return (
-    <div className='app'>
-      <div className='header'>
-        <div className='header-title'>
+    <div className="app">
+      <div className="header">
+        <div className="header-title">
           <Link to={`/`} style={styles.routerLinkStyle}>
             budget datumprikker
           </Link>
         </div>
-        <div className='header-menu'>
+
+        <div className="header-menu">
           <Link to={`/form`} style={styles.routerLinkStyle}>
             <li>
               afspraak aanmaken
@@ -73,9 +74,11 @@ export default function Dashboard() {
               </Button>
             </li>
           </Link>
+
           {user ? (
             <li>
               {name}
+
               <Button
                 onClick={logout}
                 style={styles.iconButtonStyle}
@@ -112,7 +115,9 @@ export default function Dashboard() {
           )}
         </div>
       </div>
+
       <Divider />
+
       <Outlet />
     </div>
   );

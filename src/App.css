@@ -82,6 +82,11 @@ li {
   float: right;
 }
 
+.delete-container {
+  margin-top: -5px;
+  margin-left: 110px;
+}
+
 .stepper-container {
   margin-top: 2%;
   width: 60%;
