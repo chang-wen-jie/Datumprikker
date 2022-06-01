@@ -12,7 +12,6 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 
 export default function Events() {
-  const eventsRef = collection(db, "events");
   const [eventList, setEventList] = useState([]);
   const [open, setOpen] = React.useState(false);
 
@@ -25,6 +24,8 @@ export default function Events() {
   };
 
   useEffect(() => {
+    const eventsRef = collection(db, "events");
+
     const getEvents = async () => {
       const data = await getDocs(eventsRef);
 

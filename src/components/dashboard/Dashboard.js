@@ -19,30 +19,31 @@ const styles = {
 };
 
 export default function Dashboard() {
-  const usersRef = collection(db, "users");
-  const [user, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const [name, setName] = useState("");
   const location = useLocation();
   const navigate = useNavigate();
-
-  const fetchDisplayName = async () => {
-    if(user) {
-      try {
-        const q = query(usersRef, where("uid", "==", user.uid));
-        const doc = await getDocs(q);
-        const data = doc.docs[0].data();
-        setName(data.displayName);
-      } catch (err) {
-        console.error("Onbereikbare gebruikersnaam:", err);
-        alert("Er is iets misgegaan met het ophalen van de gebruikersnaam");
-      }
-    }
-  };
 
   useEffect(() => {
     if (location.pathname === '/') {
       navigate('/events');
     }
+
+    const usersRef = collection(db, "users");
+    
+    const fetchDisplayName = async () => {
+      if(user) {
+        try {
+          const q = query(usersRef, where("uid", "==", user.uid));
+          const doc = await getDocs(q);
+          const data = doc.docs[0].data();
+          setName(data.displayName);
+        } catch (err) {
+          console.error("Onbereikbare gebruikersnaam:", err);
+          alert("Er is iets misgegaan met het ophalen van de gebruikersnaam");
+        }
+      }
+    };
     fetchDisplayName();
   }, [user, location, navigate]);
 

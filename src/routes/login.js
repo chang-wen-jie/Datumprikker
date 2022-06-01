@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function Login() {
-  const [user, error] = useAuthState(auth);
+  const [user] = useAuthState(auth);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,6 +26,7 @@ export default function Login() {
             <img
               className="user-icon"
               src={require('./../styles/img/user-icon.png')}
+              alt='User Icon'
             />
           </div>
           <div className="google-btn-wrapper">
@@ -34,6 +35,7 @@ export default function Login() {
                 <img
                   className="google-icon"
                   src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+                  alt='Google Icon'
                 />
               </div>
               <p>Inloggen met Google</p>

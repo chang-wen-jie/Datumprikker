@@ -37,6 +37,7 @@ export default class Form extends Component {
     name: '',
     email: '',
   };
+  
   stepName = ['wat', 'wanneer', 'waar', 'wie', 'overzicht'];
 
   newEvent = async () => {
