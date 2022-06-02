@@ -1,5 +1,5 @@
 import { db, auth } from '../../firebase/firebaseConfig';
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { doc, updateDoc, deleteDoc, deleteField } from 'firebase/firestore';
@@ -43,7 +43,7 @@ export default function Event({ eventData }) {
   const handleClose = () => {
     setOpen(false);
   };
-  
+
   const pinEvent = async () => {
     if (user) {
       if (!pinnedByUser) {
@@ -65,27 +65,23 @@ export default function Event({ eventData }) {
         }
       }
     } else {
-      navigate("/login");
+      navigate('/login');
     }
     setPinned(!pinned);
   };
 
   const deleteEvent = async () => {
     await deleteDoc(eventRef);
-  }
+    navigate('/');
+  };
 
   return (
     <Card variant="outlined" sx={{ width: 250 }}>
       <CardContent>
         <div className="pin-container">
           {eventData.interested ? eventData.interested.length : '0'} x
-
           <IconButton onClick={pinEvent}>
-            {pinnedByUser ? (
-              <PushPin sx={{ color: '#4285f4' }} />
-            ) : (
-              <PushPin />
-            )}
+            {pinnedByUser ? <PushPin sx={{ color: '#4285f4' }} /> : <PushPin />}
           </IconButton>
         </div>
 
@@ -111,11 +107,13 @@ export default function Event({ eventData }) {
           bekijken
         </Button>
 
-        { currentDate > date &&
-          <div className='delete-container'>
-            <IconButton onClick={deleteEvent}><DeleteIcon sx={{color: "darkred"}} /></IconButton>
+        {currentDate > date && (
+          <div className="delete-container">
+            <IconButton onClick={deleteEvent}>
+              <DeleteIcon sx={{ color: 'darkred' }} />
+            </IconButton>
           </div>
-        }
+        )}
 
         <Dialog
           open={open}
