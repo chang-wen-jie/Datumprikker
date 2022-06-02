@@ -1,5 +1,5 @@
 import { db, auth } from '../../firebase/firebaseConfig';
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import { useNavigate } from 'react-router-dom';
 import { doc, updateDoc, deleteDoc, deleteField } from 'firebase/firestore';
@@ -21,8 +21,8 @@ export default function Event({ eventData }) {
   const eventRef = doc(db, 'events', eventData.id);
   const [user] = useAuthState(auth);
   const [open, setOpen] = useState(false);
+  const [pinned, setPinned] = useState(false);
   const navigate = useNavigate();
-
   const date = eventData.date.toDate();
   const currentDate = new Date();
   Moment.locale('nl');
@@ -43,13 +43,14 @@ export default function Event({ eventData }) {
   const handleClose = () => {
     setOpen(false);
   };
-
-  const pinEvent = useCallback(async () => {
+  
+  const pinEvent = async () => {
     if (user) {
       if (!pinnedByUser) {
         await updateDoc(eventRef, {
           interested: [user.email],
         });
+        navigate('/');
       } else {
         eventData.interested.splice(index, 1);
 
@@ -66,7 +67,8 @@ export default function Event({ eventData }) {
     } else {
       navigate("/login");
     }
-  }, [eventData]);
+    setPinned(!pinned);
+  };
 
   const deleteEvent = async () => {
     await deleteDoc(eventRef);
