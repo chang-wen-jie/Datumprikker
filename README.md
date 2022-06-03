@@ -1,3 +1,3 @@
 # budget-datumprikker
 
-datumprikker maar dan slecht
+datumprikker maar dan slecht gemaakt met react end firebase
